@@ -71,7 +71,7 @@ class CRM_Lidmaatschapbijdragerapport_Form_Report_LidmaatschapBijdrageRapport ex
             'title' => ts('Contact SubType'),
           ),
         ),
-        'order_bys' =>
+        /*'order_bys' =>
         array(
           'sort_name' =>
           array(
@@ -80,7 +80,7 @@ class CRM_Lidmaatschapbijdragerapport_Form_Report_LidmaatschapBijdrageRapport ex
             'default_weight' => '0', 
             'default_order' => 'ASC'
           ),
-        ),
+        ),*/
         'grouping' => 'contact-fields',
         'group_bys' =>
         array(
