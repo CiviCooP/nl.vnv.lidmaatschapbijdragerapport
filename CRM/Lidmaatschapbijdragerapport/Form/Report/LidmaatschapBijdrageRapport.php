@@ -871,18 +871,6 @@ ROUND(AVG({$this->_aliases['civicrm_contribution_soft']}.amount), 2) as civicrm_
           $rows[$rowNum]['civicrm_country_civicrm_country_name'] = ts($value, array('context' => 'country'));
         }
       }
-
-      /*
-       * BOSW1508247 vnv.nl - exporteren data clubcollect
-       * Change the memership type id to name
-       */
-      $lidmaatschapbijdrage_config = CRM_Lidmaatschapbijdragerapport_Config::singleton();
-      $membership_types = $lidmaatschapbijdrage_config->get_membership_types();      
-      if (array_key_exists('civicrm_membership_membership_type_id', $row)) {
-        if ($value = $row['civicrm_membership_membership_type_id']) {
-          $rows[$rowNum]['civicrm_membership_membership_type_id'] = $membership_types[$value]['name'];
-        }
-      }
       
       // skip looking further in rows, if first row itself doesn't
       // have the column we need

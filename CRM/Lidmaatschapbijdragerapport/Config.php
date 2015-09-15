@@ -14,8 +14,6 @@ class CRM_Lidmaatschapbijdragerapport_Config {
   protected $_lidmaatschap_custom_group = array();
   protected $_lidmaatschap_custom_fields = array();
   protected $_lidmaatschap_custom_fields_by_name = array();
-  
-  protected $_membership_types = array();
 
   /**
    * Constructor
@@ -24,8 +22,6 @@ class CRM_Lidmaatschapbijdragerapport_Config {
     $this->set_lidmaatschap_custom_group_id();
     $this->set_lidmaatschap_custom_group();
     $this->set_lidmaatschap_custom_fields();
-    
-    $this->set_membership_types();
   }
   
   /**
@@ -60,8 +56,6 @@ class CRM_Lidmaatschapbijdragerapport_Config {
       throw new Exception('Could not find lidmaatschap historie custom group id, '
         . 'error from API CustomGroup getsingle: '.$ex->getMessage());
     }
-    
-    //CRM_Utils_System::civiExit();
   }
   
   /*
@@ -88,8 +82,6 @@ class CRM_Lidmaatschapbijdragerapport_Config {
       throw new Exception('Could not find lidmaatschap historie custom group, '
         . 'error from API CustomGroup getsingle: '.$ex->getMessage());
     }
-    
-    //CRM_Utils_System::civiExit();
   }
   
   /*
@@ -139,8 +131,6 @@ class CRM_Lidmaatschapbijdragerapport_Config {
       throw new Exception('Could not find lidmaatschap historie custom fields, '
         . 'error from API CustomField get: '.$ex->getMessage());
     }
-    
-    //CRM_Utils_System::civiExit();
   }
   
   /*
@@ -155,35 +145,5 @@ class CRM_Lidmaatschapbijdragerapport_Config {
    */
   public function get_lidmaatschap_custom_fields_by_name() {
     return $this->_lidmaatschap_custom_fields_by_name;
-  }
-  
-  /*
-   * Set membership types
-   * Get all memebrship types
-   */
-  protected function set_membership_types(){
-    try {
-      $params = array(
-        'version' => 3,
-        'sequential' => 1,
-        'is_active' => 1,
-      );
-      $result = civicrm_api('MembershipType', 'get', $params);
-            
-      foreach ($result['values'] as $key => $array){
-        $this->_membership_types[$array['id']] = $array;
-      }
-      
-    } catch (CiviCRM_API3_Exception $ex) {
-      throw new Exception('Could not find lidmaatschap historie custom fields, '
-        . 'error from API CustomField get: '.$ex->getMessage());
-    }
-  }
-  
-  /*
-   * Get membership types
-   */
-  public function get_membership_types() {
-    return $this->_membership_types;
   }
 }
