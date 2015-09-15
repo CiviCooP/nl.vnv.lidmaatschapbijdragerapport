@@ -409,10 +409,11 @@ class CRM_Lidmaatschapbijdragerapport_Form_Report_LidmaatschapBijdrageRapport ex
     /*
      * BOSW1508247 vnv.nl - exporteren data clubcollect
      * Set default frequency to Year, and
-     * receive date to choose
+     * receive date to choose, and group to "Facturering via brief door ClubCollect" (id 376)
      */
     $defaults['group_bys_freq']['receive_date'] = 'YEAR';
     $defaults['filters']['receive_date_relative'] = '0';
+    $defaults['gid_value'][0] = '376';
     return $defaults; 
   }
 
